@@ -1,0 +1,31 @@
+spring:
+
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: giftly
+
+  zipkin:
+    enabled: false
+    host: ec2-52-28-62-163.eu-central-1.compute.amazonaws.com
+    port: 9411
+
+  cloud:
+    stream:
+      defaultBinder: kafka
+      binder:
+        kafka:
+          zkNodes: ec2-52-29-160-236.eu-central-1.compute.amazonaws.com
+          brokers: ec2-52-29-160-236.eu-central-1.compute.amazonaws.com
+          defaultZkPort: 2181
+          defaultBrokerPort: 9042
+          defaultAutoCommitEnabled: true
+          batchSize: 8048
+      binding:
+        gifts:
+          destination: gifts
+          binder: kafka
+        likes:
+          destination: likes
+          binder: kafka
